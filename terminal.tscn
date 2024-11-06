@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnp3odc3nu5ak"]
+
+[ext_resource type="Script" path="res://terminal.gd" id="1_1501a"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1501a")
+
+[node name="line" type="LineEdit" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 1156.0
+offset_bottom = 653.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0323444, 0.502457, 0.0262793, 1)
+placeholder_text = "> "
+caret_blink = true
+caret_blink_interval = 1.55
+
+[node name="out" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 624.0
+offset_right = 44.0
+offset_bottom = 647.0
+
+[connection signal="text_submitted" from="line" to="." method="_on_text_edit_text_submitted"]

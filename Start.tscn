@@ -1,0 +1,145 @@
+[gd_scene load_steps=11 format=3 uid="uid://cvg678n7o6mhp"]
+
+[ext_resource type="Script" path="res://start.gd" id="1_pet05"]
+[ext_resource type="Script" path="res://script/type.gd" id="1_y3yx5"]
+[ext_resource type="AudioStream" uid="uid://ciip8viv2o14k" path="res://assets/sfx/typewriter-key-1.mp3" id="2_035jm"]
+[ext_resource type="Script" path="res://script/type2.gd" id="2_x3jei"]
+[ext_resource type="AudioStream" uid="uid://1258u5df8pjr" path="res://assets/sfx/typewriter-bell-100087.mp3" id="4_2mjm4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5u2va"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_njvye"]
+font_size = 35
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_sfnsn"]
+resource_name = "fade"
+length = 9.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skip:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.53333, 7, 7.5, 8, 8.5, 9, 9.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.1), Color(1, 1, 1, 0.2), Color(1, 1, 1, 0.3), Color(1, 1, 1, 0.4), Color(1, 1, 1, 0.5), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.7), Color(1, 1, 1, 0.9), Color(1, 1, 1, 1), Color(1, 1, 1, 0.9), Color(1, 1, 1, 0.8), Color(1, 1, 1, 0.7), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.5), Color(1, 1, 1, 0.4), Color(1, 1, 1, 0.3), Color(1, 1, 1, 0.2), Color(1, 1, 1, 0.1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_si4ak"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skip:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n38cf"]
+_data = {
+&"fade": SubResource("Animation_sfnsn"),
+&"RESET": SubResource("Animation_si4ak")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pet05")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+label_settings = SubResource("LabelSettings_5u2va")
+script = ExtResource("1_y3yx5")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 24.5
+offset_right = 20.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+label_settings = SubResource("LabelSettings_5u2va")
+script = ExtResource("2_x3jei")
+
+[node name="type" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_035jm")
+
+[node name="lineEnd" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2mjm4")
+
+[node name="simulation" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.5
+offset_top = -17.5
+offset_right = 171.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "The universe is a simulation."
+label_settings = SubResource("LabelSettings_njvye")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 554.0
+offset_top = 366.0
+offset_right = 599.0
+offset_bottom = 397.0
+text = "Play."
+
+[node name="skip" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 72.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Click to skip"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n38cf")
+}
+autoplay = "fade"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

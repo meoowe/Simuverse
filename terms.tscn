@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://pyb7wb7otqtu"]
+
+[ext_resource type="Script" path="res://script/terms.gd" id="1_svckv"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Agree" type="Button" parent="."]
+custom_minimum_size = Vector2(469, 0)
+offset_top = 574.0
+offset_right = 1151.0
+offset_bottom = 605.0
+text = "I accept."
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1147.0
+offset_bottom = 574.0
+script = ExtResource("1_svckv")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 573.0
+text = "
+
+Welcome, player. Before you embark on this journey, you must understand the following:
+
+This is not a game: What you are about to experience is not merely entertainment. You are diving into the very fabric of our simulated universe.
+
+Secrets will be revealed: The secrets you uncover may challenge your perception of reality. Proceed with caution.
+
+No turning back: Once you accept, there is no going back. Your path will be filled with challenges, deceptions, and enigmas.
+
+You are responsible: Your actions have consequences. The choices you make will shape your journey and reveal hidden truths.
+
+Consent: By clicking \"Accept,\" you agree to the terms and conditions and acknowledge the risks involved. You accept full responsibility for the knowledge you gain and the paths you choose. You also can't decline, so I guess you're stuck here forever then. That's nice!"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 442.0
+offset_top = 4.0
+offset_right = 761.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 30
+text = "Terms And Conditions"
+
+[connection signal="pressed" from="Agree" to="Panel" method="_on_agree_pressed"]

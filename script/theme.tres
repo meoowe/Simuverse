@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://p6x0scffhf3o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5o6hp"]
+bg_color = Color(0.369495, 0.697785, 9.62615e-07, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.225823, 0.619091, 0.263957, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkg2v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifbpi"]
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxFlat_5o6hp")
+RichTextLabel/styles/fill = SubResource("StyleBoxFlat_rkg2v")
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_ifbpi")
