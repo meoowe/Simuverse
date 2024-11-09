@@ -1,5 +1,6 @@
 # Simuverse
 *Made for the 2024 Github Game Off*
+[![](https://tokei.rs/b1/github/meoowe/Simuverse)](https://github.com/meoowe/Simuverse).
 ## Tools Used
  * [Godot Game Engine](https://godotengine.org/)
  * [GitHub Desktop](https://github.com/apps/desktop)
