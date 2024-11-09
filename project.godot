@@ -10,24 +10,33 @@ config_version=5
 
 [application]
 
-config/name="Simulation."
+config/name="Simuverse."
 run/main_scene="res://Start.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.368627, 0.698039, 0, 1)
+config/icon="res://assets/img/house.png"
 
 [autoload]
 
 Global="*res://script/global.gd"
+VideoSettings="*res://addons/cog/autoloads/video_settings.tscn"
+AudioSettings="*res://addons/cog/autoloads/audio_settings.gd"
+InputSettings="*res://addons/cog/autoloads/input_settings.gd"
 
 [display]
 
-window/size/borderless=true
+window/size/mode=3
+mouse_cursor/custom_image="res://assets/img/mouse cursor.png"
 
 [editor]
 
 movie_writer/movie_file="C:/Users/Aarav/Documents/simulation/movie.avi"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/cog/plugin.cfg")
 
 [github_to_itch]
 
@@ -51,3 +60,4 @@ pause={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.169521, 0.344109, 1.44392e-07, 1)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnp3odc3nu5ak"]
+[gd_scene load_steps=7 format=3 uid="uid://bnp3odc3nu5ak"]
 
 [ext_resource type="Script" path="res://terminal.gd" id="1_1501a"]
-[ext_resource type="PackedScene" uid="uid://tyal47hxuyxa" path="res://Pause.tscn" id="2_kltei"]
+[ext_resource type="Script" path="res://script/pause.gd" id="2_hhxwm"]
+[ext_resource type="Theme" uid="uid://p6x0scffhf3o" path="res://script/theme.tres" id="3_g82n3"]
 
 [sub_resource type="Animation" id="Animation_3ussr"]
 resource_name = "new_animation"
@@ -23,22 +24,87 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1501a")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_4r6w0")
-}
-
-[node name="PauseScreen" parent="." instance=ExtResource("2_kltei")]
+[node name="PauseScreen" type="Control" parent="."]
+process_mode = 3
 visible = false
+z_index = 3
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -108.864
-offset_right = 108.864
-metadata/_edit_lock_ = true
+offset_left = -109.0
+offset_right = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_hhxwm")
+
+[node name="Panel" type="Panel" parent="PauseScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_g82n3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -71.5
+offset_right = 194.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PauseScreen/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Game Paused"
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="PauseScreen/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="resume" type="Button" parent="PauseScreen/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Resume Game"
+
+[node name="Control" type="Control" parent="PauseScreen/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="quit" type="Button" parent="PauseScreen/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="Control3" type="Control" parent="PauseScreen/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="options" type="Button" parent="PauseScreen/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4r6w0")
+}
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -47,7 +113,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
 
 [node name="line" type="LineEdit" parent="Panel"]
 layout_mode = 1
@@ -103,4 +168,39 @@ offset_right = 122.0
 offset_bottom = 59.0
 label_settings = SubResource("LabelSettings_43duf")
 
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.5
+offset_top = -107.0
+offset_right = 149.5
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.5
+offset_top = -102.5
+offset_right = 142.5
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Team ALERT:
+We have found information hidden in the Earth giving us some debug information. We don't know what its abou due to the file being encrypted. Your job is to decrypt the file and report back with the msgTeam command. Access the file by using cd encrypted_files. Good Luck"
+autowrap_mode = 3
+
+[connection signal="pressed" from="PauseScreen/Panel/VBoxContainer/resume" to="PauseScreen" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseScreen/Panel/VBoxContainer/quit" to="PauseScreen" method="_on_quit_pressed"]
+[connection signal="pressed" from="PauseScreen/Panel/VBoxContainer/options" to="PauseScreen" method="_on_options_pressed"]
 [connection signal="text_submitted" from="Panel/line" to="." method="_on_text_edit_text_submitted"]

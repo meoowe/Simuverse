@@ -7,6 +7,7 @@ signal PlayHelp
 @onready var out: Label = $Panel/out
 @onready var history: Label = $Panel/history
 @onready var past_command: Label = $Panel/pastCommand
+@onready var panel_2: Panel = $Panel2
 
 var first = true
 func _ready() -> void:
@@ -17,7 +18,7 @@ func _ready() -> void:
 	else:
 		PlayTerminal.emit()
 var commands = ["hello", "exit", "help", "version", "volume"]
-
+var cdEnable = false
 func _on_text_edit_text_submitted(new_text: String) -> void:
 	line.clear()
 	var command = new_text.to_lower()
@@ -31,19 +32,28 @@ func _on_text_edit_text_submitted(new_text: String) -> void:
 			out.text = "Goodbye!"
 			StopTerminal.emit()
 			get_tree().change_scene_to_file("res://game.tscn")
+		elif splitCommand[0] == "cd" && cdEnable:
+			out.text = "hello"
 		elif command == "help":
 			out.text = "Possible commands are: " + str(commands) + "."
-			PlayHelp.emit()
+			if !Global.helpUsed:
+				PlayHelp.emit()
+				Global.helpUsed = true
 		elif command == "version":
 			out.text = Global.version
+			commands.append("cd")
+			cdEnable = true
+			panel_2.show()
 		elif splitCommand[0] == "volume":
+			if splitCommand.size() < 3:
+				out.text = "Part Of Game Options. Sets the volume. If intenedVolume is not provided, it will return the current volume \n Usage: volume <audio type: Master, Music or Narration> <intended volume%>"
+				return
 			var bus_name = splitCommand[1]
-			if splitCommand[1] == null:
-				out.text = "Possible Options: Master, Music or Narration"
-			elif bus_name == "master":
+			if bus_name == "master":
 				bus_name = "Master"
-			elif bus_name == "music":
+			if bus_name == "music":
 				bus_name = "Music"
+			
 			var bus_index: int = AudioServer.get_bus_index(bus_name)
 			var volume = splitCommand[2]
 			if volume == null:

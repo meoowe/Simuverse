@@ -1,6 +1,7 @@
 extends Node
 var terminalNew:bool = true
 var newGame:bool = true
+var helpUsed = false
 @export var version:String = "0.0.1-DEV-8.11.24"
 @export var debug:bool = false
 # Autoload for music
@@ -60,3 +61,5 @@ func _stopMission():
 	missionPlayer.stop()
 func _startHelp():
 	helpPlayer.play()
+func _wait(delay:float):
+	await get_tree().create_timer(delay).timeout

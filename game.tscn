@@ -76,27 +76,30 @@ texture = ExtResource("3_bn78j")
 
 [node name="Computer" type="TextureButton" parent="."]
 top_level = true
-z_index = -1
+z_index = 4
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 100.0
-offset_top = -127.0
-offset_right = 128.0
-offset_bottom = -110.0
+offset_top = -215.0
+offset_right = 228.0
+offset_bottom = -87.0
 grow_vertical = 0
 texture_normal = ExtResource("4_3efy6")
 
 [node name="Table" type="TextureRect" parent="."]
-show_behind_parent = true
+visibility_layer = 2
+z_index = 1
+z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -128.0
-offset_right = 128.0
-offset_bottom = -107.0
+offset_left = 4.0
+offset_top = -237.0
+offset_right = 132.0
+offset_bottom = -109.0
 grow_vertical = 0
 scale = Vector2(3.28125, 1.85547)
 texture = ExtResource("5_pidis")
