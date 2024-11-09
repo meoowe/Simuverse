@@ -6,8 +6,8 @@ extends Label
 @onready var simulation: Label = $"../simulation"
 @onready var button: Button = $"../Button"
 
-@export var between_time: float = 0.1
-@export var start_delay:float = 10
+@export var between_time: float = 0.6
+@export var start_delay:float = 9
 var maxSize = 15
 @export var sizeIncerement = 1
 func wait() -> void:

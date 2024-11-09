@@ -1,25 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://pyb7wb7otqtu"]
+[gd_scene load_steps=4 format=3 uid="uid://pyb7wb7otqtu"]
 
+[ext_resource type="Theme" uid="uid://p6x0scffhf3o" path="res://script/theme.tres" id="1_bpof6"]
 [ext_resource type="Script" path="res://script/terms.gd" id="1_svckv"]
+[ext_resource type="PackedScene" uid="uid://tyal47hxuyxa" path="res://Pause.tscn" id="3_n6pmg"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Agree" type="Button" parent="."]
-custom_minimum_size = Vector2(469, 0)
-offset_top = 574.0
-offset_right = 1151.0
-offset_bottom = 605.0
-text = "I accept."
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.5
+offset_top = -22.0
+offset_right = 236.5
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="."]
-offset_right = 1147.0
-offset_bottom = 574.0
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_bpof6")
 script = ExtResource("1_svckv")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Panel"]
 layout_mode = 0
-offset_right = 1150.0
-offset_bottom = 573.0
+offset_left = 239.5
+offset_top = 27.0
+offset_right = 1389.5
+offset_bottom = 600.0
+theme = ExtResource("1_bpof6")
 text = "
 
 Welcome, player. Before you embark on this journey, you must understand the following:
@@ -34,13 +48,33 @@ You are responsible: Your actions have consequences. The choices you make will s
 
 Consent: By clicking \"Accept,\" you agree to the terms and conditions and acknowledge the risks involved. You accept full responsibility for the knowledge you gain and the paths you choose. You also can't decline, so I guess you're stuck here forever then. That's nice!"
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Panel"]
 layout_mode = 0
-offset_left = 442.0
-offset_top = 4.0
-offset_right = 761.0
-offset_bottom = 46.0
+offset_left = 604.5
+offset_top = 87.0
+offset_right = 971.5
+offset_bottom = 129.0
 theme_override_font_sizes/font_size = 30
 text = "Terms And Conditions"
 
-[connection signal="pressed" from="Agree" to="Panel" method="_on_agree_pressed"]
+[node name="Agree" type="Button" parent="VBoxContainer/HBoxContainer/Panel"]
+custom_minimum_size = Vector2(469, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 237.0
+offset_top = 606.0
+offset_right = 1392.0
+offset_bottom = 661.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_bpof6")
+text = "I accept."
+
+[node name="PauseScreen" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_n6pmg")]
+visible = false
+position = Vector2(474, 106)
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/Agree" to="VBoxContainer/HBoxContainer/Panel" method="_on_agree_pressed"]

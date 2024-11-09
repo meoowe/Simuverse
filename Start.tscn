@@ -1,16 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvg678n7o6mhp"]
+[gd_scene load_steps=12 format=3 uid="uid://cvg678n7o6mhp"]
 
 [ext_resource type="Script" path="res://start.gd" id="1_pet05"]
 [ext_resource type="Script" path="res://script/type.gd" id="1_y3yx5"]
 [ext_resource type="AudioStream" uid="uid://ciip8viv2o14k" path="res://assets/sfx/typewriter-key-1.mp3" id="2_035jm"]
 [ext_resource type="Script" path="res://script/type2.gd" id="2_x3jei"]
 [ext_resource type="AudioStream" uid="uid://1258u5df8pjr" path="res://assets/sfx/typewriter-bell-100087.mp3" id="4_2mjm4"]
+[ext_resource type="Theme" uid="uid://p6x0scffhf3o" path="res://script/theme.tres" id="6_i7ncf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5u2va"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_njvye"]
 font_size = 35
-font_color = Color(1, 0, 0, 1)
+font_color = Color(0.933326, 4.81308e-06, 9.62615e-07, 1)
 
 [sub_resource type="Animation" id="Animation_sfnsn"]
 resource_name = "fade"
@@ -19,7 +20,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("skip:modulate")
+tracks/0/path = NodePath("HBoxContainer/VBoxContainer/skip:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,7 +35,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("skip:modulate")
+tracks/0/path = NodePath("HBoxContainer/VBoxContainer/skip:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,87 +60,64 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pet05")
 
-[node name="Label" type="Label" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -240.0
+offset_top = -86.0
+offset_right = 240.0
+offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_i7ncf")
 theme_override_font_sizes/font_size = 32
 label_settings = SubResource("LabelSettings_5u2va")
 script = ExtResource("1_y3yx5")
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 24.5
-offset_right = 20.0
-offset_bottom = 47.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_i7ncf")
 theme_override_font_sizes/font_size = 32
 label_settings = SubResource("LabelSettings_5u2va")
 script = ExtResource("2_x3jei")
 
-[node name="type" type="AudioStreamPlayer" parent="."]
+[node name="type" type="AudioStreamPlayer" parent="HBoxContainer/VBoxContainer"]
 stream = ExtResource("2_035jm")
 
-[node name="lineEnd" type="AudioStreamPlayer" parent="."]
+[node name="lineEnd" type="AudioStreamPlayer" parent="HBoxContainer/VBoxContainer"]
 stream = ExtResource("4_2mjm4")
 
-[node name="simulation" type="Label" parent="."]
+[node name="simulation" type="Label" parent="HBoxContainer/VBoxContainer"]
 visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -171.5
-offset_top = -17.5
-offset_right = 171.5
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 text = "The universe is a simulation."
 label_settings = SubResource("LabelSettings_njvye")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
 visible = false
-layout_mode = 0
-offset_left = 554.0
-offset_top = 366.0
-offset_right = 599.0
-offset_bottom = 397.0
+layout_mode = 2
+theme = ExtResource("6_i7ncf")
 text = "Play."
 
-[node name="skip" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 72.0
-offset_bottom = 23.0
-grow_horizontal = 2
+[node name="skip" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
 text = "Click to skip"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer/VBoxContainer"]
+root_node = NodePath("../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_n38cf")
 }
 autoplay = "fade"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

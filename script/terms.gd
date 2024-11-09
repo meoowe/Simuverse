@@ -1,5 +1,7 @@
 extends Panel
 
+@onready var pause_screen: Node2D = $"../PauseScreen"
+
 signal PlayTerms
 signal StopTerms
 signal PlayAccept
@@ -10,7 +12,11 @@ func _ready() -> void:
 	PlayAccept.connect(Global._startAccept)
 	PlayTerms.emit()
 	await get_tree().create_timer(1).timeout
-
+	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		pause_screen.show()
+		get_tree().paused = true
 
 func _on_agree_pressed():
 	StopTerms.emit()
