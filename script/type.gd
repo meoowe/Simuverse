@@ -17,19 +17,18 @@ func addText(appendtext:String) -> void:
 func _ready() -> void:
 	await get_tree().create_timer(start_delay).timeout
 	addText("H")
-	type.play()
+	 
 	await wait()
 	addText("e")
-	type.play()
+	 
 	await wait()
 	addText("l")
-	type.play()
+	 
 	await wait()
 	addText("l")
-	type.play()
+	 
 	await wait()
 	addText("o")
-	type.play()
+	 
 	await wait()
 	addText(".")
-	line_end.play()

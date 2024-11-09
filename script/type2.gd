@@ -12,9 +12,8 @@ var maxSize = 15
 @export var sizeIncerement = 1
 func wait() -> void:
 	await get_tree().create_timer(between_time).timeout
-func addText(text:String) -> void:
-	label.text = label.text + text
-	type.play()
+func addText(textIn:String) -> void:
+	label.text = label.text + textIn
 	await wait()
 
 func _ready() -> void:
@@ -39,7 +38,6 @@ func _ready() -> void:
 	await addText("n")
 	await addText("g")
 	await addText(".")
-	line_end.play()
 	label.hide()
 	label2.hide()
 	await get_tree().create_timer(2).timeout

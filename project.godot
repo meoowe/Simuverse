@@ -21,7 +21,6 @@ Global="*res://script/global.gd"
 
 [display]
 
-window/size/mode=3
 window/size/borderless=true
 
 [editor]
@@ -29,10 +28,6 @@ window/size/borderless=true
 movie_writer/movie_file="C:/Users/Aarav/Documents/simulation/movie.avi"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/github_to_itch/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [github_to_itch]
 

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Simuverse
 *Made for the 2024 Github Game Off*
 ## Tools Used
@@ -7,3 +8,5 @@
  * [Windows 11 LOL](https://www.microsoft.com/en-gb/software-download/windows11)
  * [Pixelorama](https://orama-interactive.itch.io/pixelorama)
  * [ElevenLabs Speech Symphysis](https://elevenlabs.io)
+=======
+>>>>>>> Stashed changes

@@ -46,14 +46,20 @@ _data = {
 &"RESET": SubResource("Animation_7lbf7")
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Control"]
 z_index = 999
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_pameu")
 
 [node name="Label" type="Label" parent="."]
-offset_top = 13.0
-offset_right = 75.0
-offset_bottom = 36.0
+layout_mode = 0
+offset_right = 98.0
+offset_bottom = 23.0
 theme = ExtResource("2_13jtc")
 text = "Location: "
 
@@ -61,30 +67,50 @@ text = "Location: "
 stream = ExtResource("2_42nwj")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 71.0
-offset_top = 3.0
-offset_right = 111.0
-offset_bottom = 43.0
+layout_mode = 0
+offset_left = 86.0
+offset_top = -2.0
+offset_right = 126.0
+offset_bottom = 38.0
 texture = ExtResource("3_bn78j")
 
 [node name="Computer" type="TextureButton" parent="."]
-z_index = 4
-offset_left = 108.0
-offset_top = 426.0
-offset_right = 236.0
-offset_bottom = 554.0
+top_level = true
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = -127.0
+offset_right = 128.0
+offset_bottom = -110.0
+grow_vertical = 0
 texture_normal = ExtResource("4_3efy6")
 
-[node name="Table" type="Sprite2D" parent="."]
-position = Vector2(207, 528)
+[node name="Table" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = -107.0
+grow_vertical = 0
 scale = Vector2(3.28125, 1.85547)
 texture = ExtResource("5_pidis")
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 262.0
-offset_top = 409.0
-offset_right = 400.0
-offset_bottom = 486.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.771
+anchor_bottom = 0.771
+offset_left = 256.0
+offset_top = -83.0
+offset_right = 394.0
+offset_bottom = 65.392
+grow_vertical = 0
 theme = ExtResource("2_13jtc")
 text = "Pssst... Click on an object to use it"
 autowrap_mode = 3
@@ -96,6 +122,11 @@ libraries = {
 
 [node name="PauseScreen" parent="." instance=ExtResource("6_u0trl")]
 visible = false
-position = Vector2(462, 120)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 
 [connection signal="pressed" from="Computer" to="." method="_on_computer_pressed"]

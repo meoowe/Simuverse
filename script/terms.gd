@@ -1,6 +1,6 @@
 extends Panel
 
-@onready var pause_screen: Node2D = $"../PauseScreen"
+@onready var pause_screen: Control = $"../PauseScreen"
 
 signal PlayTerms
 signal StopTerms

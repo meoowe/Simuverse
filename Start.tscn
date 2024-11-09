@@ -1,10 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvg678n7o6mhp"]
+[gd_scene load_steps=10 format=3 uid="uid://cvg678n7o6mhp"]
 
 [ext_resource type="Script" path="res://start.gd" id="1_pet05"]
 [ext_resource type="Script" path="res://script/type.gd" id="1_y3yx5"]
-[ext_resource type="AudioStream" uid="uid://ciip8viv2o14k" path="res://assets/sfx/typewriter-key-1.mp3" id="2_035jm"]
 [ext_resource type="Script" path="res://script/type2.gd" id="2_x3jei"]
-[ext_resource type="AudioStream" uid="uid://1258u5df8pjr" path="res://assets/sfx/typewriter-bell-100087.mp3" id="4_2mjm4"]
 [ext_resource type="Theme" uid="uid://p6x0scffhf3o" path="res://script/theme.tres" id="6_i7ncf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5u2va"]
@@ -90,12 +88,6 @@ theme = ExtResource("6_i7ncf")
 theme_override_font_sizes/font_size = 32
 label_settings = SubResource("LabelSettings_5u2va")
 script = ExtResource("2_x3jei")
-
-[node name="type" type="AudioStreamPlayer" parent="HBoxContainer/VBoxContainer"]
-stream = ExtResource("2_035jm")
-
-[node name="lineEnd" type="AudioStreamPlayer" parent="HBoxContainer/VBoxContainer"]
-stream = ExtResource("4_2mjm4")
 
 [node name="simulation" type="Label" parent="HBoxContainer/VBoxContainer"]
 visible = false

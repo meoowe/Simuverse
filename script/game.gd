@@ -1,6 +1,6 @@
-extends Node2D
+extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var pause_screen: Node2D = $PauseScreen
+@onready var pause_screen: Control = $PauseScreen
 
 signal PlayMission
 signal StopMission

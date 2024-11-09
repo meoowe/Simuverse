@@ -2,7 +2,7 @@ extends Node
 var terminalNew:bool = true
 var newGame:bool = true
 @export var version:String = "0.0.1-DEV-8.11.24"
-@export var debug:bool = true
+@export var debug:bool = false
 # Autoload for music
 # Music controller
 var termsAudio = load("res://assets/narration/1Terms.mp3")

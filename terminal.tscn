@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnp3odc3nu5ak"]
+[gd_scene load_steps=6 format=3 uid="uid://bnp3odc3nu5ak"]
 
 [ext_resource type="Script" path="res://terminal.gd" id="1_1501a"]
 [ext_resource type="PackedScene" uid="uid://tyal47hxuyxa" path="res://Pause.tscn" id="2_kltei"]
@@ -11,39 +11,17 @@ _data = {
 &"new_animation": SubResource("Animation_3ussr")
 }
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_1501a")
+[sub_resource type="LabelSettings" id="LabelSettings_43duf"]
+font_color = Color(0.193718, 0.494999, 4.81307e-07, 1)
 
-[node name="line" type="LineEdit" parent="."]
+[node name="Node2D" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -4.0
-offset_right = 1156.0
-offset_bottom = 653.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.0323444, 0.502457, 0.0262793, 1)
-placeholder_text = "> "
-caret_blink = true
-caret_blink_interval = 1.55
-
-[node name="out" type="Label" parent="."]
-offset_left = 4.0
-offset_top = 624.0
-offset_right = 44.0
-offset_bottom = 647.0
-
-[node name="Label" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 485.0
-offset_right = 646.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "Hint: Try typing hello"
+script = ExtResource("1_1501a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -52,6 +30,77 @@ libraries = {
 
 [node name="PauseScreen" parent="." instance=ExtResource("2_kltei")]
 visible = false
-position = Vector2(437, 133)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.864
+offset_right = 108.864
+metadata/_edit_lock_ = true
 
-[connection signal="text_submitted" from="line" to="." method="_on_text_edit_text_submitted"]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="line" type="LineEdit" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.0323444, 0.502457, 0.0262793, 1)
+placeholder_text = "> "
+caret_blink = true
+caret_blink_interval = 1.55
+caret_force_displayed = true
+caret_mid_grapheme = true
+
+[node name="out" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -554.0
+offset_bottom = -531.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.5
+offset_right = 80.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Hint: Try typing hello"
+
+[node name="history" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 3.0
+offset_top = 68.0
+offset_right = 3.0
+offset_bottom = 91.0
+grow_horizontal = 2
+
+[node name="pastCommand" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 36.0
+offset_right = 122.0
+offset_bottom = 59.0
+label_settings = SubResource("LabelSettings_43duf")
+
+[connection signal="text_submitted" from="Panel/line" to="." method="_on_text_edit_text_submitted"]
